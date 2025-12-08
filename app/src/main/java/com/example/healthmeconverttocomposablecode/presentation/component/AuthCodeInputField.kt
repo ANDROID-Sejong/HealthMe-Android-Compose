@@ -2,6 +2,7 @@ package com.example.healthmeconverttocomposablecode.presentation.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -31,7 +32,11 @@ import com.example.healthmeconverttocomposablecode.ui.AppColors
 import com.example.healthmeconverttocomposablecode.ui.AppFonts
 
 @Composable
-fun AuthCodeInputField(label: String, placeholder: String = "") {
+fun AuthCodeInputField(
+    label: String,
+    onResendClick: () -> Unit,
+    onVerifyClick: () -> Unit
+) {
 
     val inputText = remember { mutableStateOf("") }
 
@@ -66,13 +71,6 @@ fun AuthCodeInputField(label: String, placeholder: String = "") {
                     inputText.value = text
                 },
                 modifier = Modifier.padding(start = 17.dp),
-                placeholder = {
-                    Text(
-                        text = placeholder,
-                        fontSize = 17.sp,
-                        color = AppColors.placeholderColor
-                    )
-                },
                 colors = TextFieldDefaults.colors(
                     focusedContainerColor = Color.Transparent,
                     unfocusedContainerColor = Color.Transparent,
@@ -108,7 +106,7 @@ fun AuthCodeInputField(label: String, placeholder: String = "") {
                 ) {
                     Text(
                         "인증",
-                        modifier = Modifier,
+                        modifier = Modifier.clickable(onClick = onVerifyClick),
                         fontFamily = AppFonts.gmarketSans,
                         fontSize = 8.sp,
                         color = AppColors.authTextColor,
@@ -127,7 +125,7 @@ fun AuthCodeInputField(label: String, placeholder: String = "") {
                 ) {
                     Text(
                         "재전송",
-                        modifier = Modifier,
+                        modifier = Modifier.clickable(onClick = onResendClick),
                         fontFamily = AppFonts.gmarketSans,
                         fontSize = 8.sp,
                         color = AppColors.authTextColor,
@@ -143,5 +141,8 @@ fun AuthCodeInputField(label: String, placeholder: String = "") {
 @Preview(showBackground = true)
 @Composable
 fun AuthCodeInputFieldPreview() {
-    AuthCodeInputField("인증코드")
+    AuthCodeInputField(
+        "인증코드", {},//TODO 인증여부 반환
+        {} //TODO 이메일 재전송 및 시간 초기화)
+    )
 }
