@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.healthmeconverttocomposablecode"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.healthmeconverttocomposablecode"
