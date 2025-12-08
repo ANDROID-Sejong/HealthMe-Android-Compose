@@ -16,15 +16,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.healthmeconverttocomposablecode.ui.AppFonts
-import com.example.healthmeconverttocomposablecode.ui.theme.AppColors
-import com.example.healthmeconverttocomposablecode.ui.theme.AppColors.buttonColor
+import com.example.healthmeconverttocomposablecode.ui.AppColors
 
 @Composable
 fun BigButton(
     text: String,
-    backgroundColor: Color = AppColors.buttonColor,
-    borderColor: Color = AppColors.buttonBorder,
-    textColor: Color = AppColors.textColor
+    backgroundColor: Color = AppColors.bigButtonColor,
+    borderColor: Color = AppColors.bigButtonBorder,
+    textColor: Color = AppColors.bigButtonTextColor
 ) {
     Box(
         modifier = Modifier
