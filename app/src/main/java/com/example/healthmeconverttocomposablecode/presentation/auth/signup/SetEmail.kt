@@ -32,6 +32,7 @@ import com.example.healthmeconverttocomposablecode.ui.AppFonts
 @Composable
 fun SetEmail() {
     var isCodeFieldVisible by remember { mutableStateOf(false) }
+    var authCode by remember { mutableStateOf("") }
 
 
     Box{
@@ -53,10 +54,17 @@ fun SetEmail() {
                 lineHeight = 42.sp
             )
             Spacer(modifier = Modifier.height(21.dp))
-            EmailAuthInputField("이메일", "health@gmail.com", onClick = {isCodeFieldVisible=true})
+            EmailAuthInputField("이메일", "health@gmail.com", onClick = {isCodeFieldVisible=true},{})
             Spacer(modifier = Modifier.height(13.dp))
             if(isCodeFieldVisible){
-                AuthCodeInputField("인증코드")
+                AuthCodeInputField(
+                    "인증코드",
+                    value = authCode,//실제 인증코드 값
+                    onResendClick = {},
+                    onVerifyClick = {},
+                    onValueChange = {},
+                    remainingTime = ""//TODO 타이머 구현 후 수정,
+                )
             }
             else{
                 Spacer(modifier=Modifier.height(82.dp))

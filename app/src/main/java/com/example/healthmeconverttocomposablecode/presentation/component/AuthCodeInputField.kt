@@ -35,14 +35,11 @@ import com.example.healthmeconverttocomposablecode.ui.AppFonts
 fun AuthCodeInputField(
     label: String,
     value: String,//입력한 인증코드 값
+    onValueChange: (String) -> Unit,
     onResendClick: () -> Unit,
     onVerifyClick: () -> Unit,
     remainingTime: String//남은시간
 ) {
-
-    val inputText = remember { mutableStateOf("") }
-
-
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
             label,
@@ -68,10 +65,8 @@ fun AuthCodeInputField(
             contentAlignment = Alignment.CenterStart
         ) {
             TextField(
-                value = inputText.value,//inputText
-                onValueChange = { text ->
-                    inputText.value = text
-                },
+                value = value,
+                onValueChange = onValueChange,
                 modifier = Modifier.padding(start = 17.dp),
                 colors = TextFieldDefaults.colors(
                     focusedContainerColor = Color.Transparent,
@@ -90,7 +85,7 @@ fun AuthCodeInputField(
 
             Row(modifier = Modifier.align(Alignment.CenterEnd)) {
                 Text(
-                    "05:00",
+                    text = remainingTime,
                     modifier = Modifier.align(Alignment.CenterVertically),
                     color = AppColors.countDownTextColor,
                     fontSize = 10.sp,
@@ -144,8 +139,8 @@ fun AuthCodeInputField(
 @Composable
 fun AuthCodeInputFieldPreview() {
     AuthCodeInputField(
-        "인증코드","", {},//TODO 인증여부 반환
+        "인증코드", "", {},//TODO 인증여부 반환
         {} //TODO 이메일 재전송 및 시간 초기화)
-        ,""
+        , {},"05:00"
     )
 }
