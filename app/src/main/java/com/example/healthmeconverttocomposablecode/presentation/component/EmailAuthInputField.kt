@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.healthmeconverttocomposablecode.ui.AppFonts
 import com.example.healthmeconverttocomposablecode.ui.AppColors
+private val EMAIL_REGEX = Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$")
 
 @Composable
 fun EmailAuthInputField(
@@ -37,9 +38,7 @@ fun EmailAuthInputField(
     onValueChange: (String) -> Unit
 ) {
     val inputText = remember { mutableStateOf("") }
-    val isEnable = remember { mutableStateOf<Boolean>(false) }
-    val emailRegex = Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$")
-    isEnable.value = inputText.value.matches(emailRegex)
+    val isEnable = EMAIL_REGEX.matches(inputText.value)
 
 
 
@@ -69,7 +68,10 @@ fun EmailAuthInputField(
         ) {
             TextField(
                 value = inputText.value,//inputText
-                onValueChange = { inputText.value = it },
+                onValueChange = {
+                    inputText.value = it
+                    onValueChange(it) //외부 콜백에 전달
+                },
                 modifier = Modifier.padding(start = 17.dp),
                 singleLine = true,
                 placeholder = {
@@ -96,9 +98,9 @@ fun EmailAuthInputField(
                 modifier = Modifier
                     .padding(end = 29.dp)
                     .size(width = 72.dp, height = 22.dp)
-                    .clickable(enabled = isEnable.value, onClick = onClick)
+                    .clickable(enabled = isEnable, onClick = onClick)
                     .background(
-                        color = if (isEnable.value) AppColors.authButtonColor else AppColors.authButtonDisableColor,
+                        color = if (isEnable) AppColors.authButtonColor else AppColors.authButtonDisableColor,
                         shape = RoundedCornerShape(5.dp)
                     )
                     .align(Alignment.CenterEnd),
@@ -121,5 +123,5 @@ fun EmailAuthInputField(
 @Preview(showBackground = true)
 @Composable
 fun EmailAuthInputFieldPreview() {
-    EmailAuthInputField("이메일", "Health1234@gmail.com", {},{})
+    EmailAuthInputField("이메일", "Health1234@gmail.com", {}, {})
 }
