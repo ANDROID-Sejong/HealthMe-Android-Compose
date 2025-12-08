@@ -6,6 +6,7 @@ import androidx.compose.ui.graphics.Color
 object AppColors {
     val mainColor = Color(0xff6A73FF)
     val white = Color(0xffffffff)
+    val black = Color(0xff000000)
 
     val buttonColor = Color(0xffE4FF3E)
     val buttonBorder = Color(0xff9BB400)

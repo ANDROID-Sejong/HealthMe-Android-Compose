@@ -50,7 +50,7 @@ fun FirstScreen() {
             Spacer(modifier = Modifier.height(74.dp))
             BigButton("로그인")
             Spacer(modifier = Modifier.height(18.dp))
-            BigButton("회원가입") //TODO 나중에 색상 변경할 것
+            BigButton("회원가입", backgroundColor = AppColors.white, textColor = AppColors.black) //TODO 나중에 색상 변경할 것
             Spacer(modifier = Modifier.height(224.dp))
         }
         Image(
