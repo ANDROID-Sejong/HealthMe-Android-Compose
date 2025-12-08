@@ -2,6 +2,7 @@ package com.example.healthmeconverttocomposablecode.presentation.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -29,8 +30,11 @@ import com.example.healthmeconverttocomposablecode.ui.AppFonts
 import com.example.healthmeconverttocomposablecode.ui.AppColors
 
 @Composable
-fun EmailAuthInputField(label: String, placeholder: String) {
-    var inputText = remember { mutableStateOf("") }
+fun EmailAuthInputField(label: String, placeholder: String,onClick : () -> Unit) {
+    val inputText = remember { mutableStateOf("") }
+    val isEnable = remember { mutableStateOf<Boolean>(false) }
+    val emailRegex = Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$")
+    isEnable.value = inputText.value.matches(emailRegex)
 
 
 
@@ -73,8 +77,9 @@ fun EmailAuthInputField(label: String, placeholder: String) {
                 modifier = Modifier
                     .padding(end = 29.dp)
                     .size(width = 72.dp, height = 22.dp)
+                    .clickable(enabled = isEnable.value, onClick = onClick)
                     .background(
-                        color = AppColors.authButtonColor,
+                        color = if(isEnable.value)AppColors.authButtonColor else AppColors.authButtonDisableColor,
                         shape = RoundedCornerShape(5.dp)
                     )
                     .align(Alignment.CenterEnd),
@@ -86,7 +91,8 @@ fun EmailAuthInputField(label: String, placeholder: String) {
                     fontFamily = AppFonts.gmarketSans,
                     fontSize = 8.sp,
                     color = AppColors.authTextColor,
-                    fontWeight = FontWeight.Medium
+                    fontWeight = FontWeight.Medium,
+
                 )
             }
         }
@@ -97,5 +103,5 @@ fun EmailAuthInputField(label: String, placeholder: String) {
 @Preview(showBackground = true)
 @Composable
 fun EmailAuthInputFieldPreview() {
-    EmailAuthInputField("이메일", "Health1234@gmail.com")
+    EmailAuthInputField("이메일", "Health1234@gmail.com",{})
 }
