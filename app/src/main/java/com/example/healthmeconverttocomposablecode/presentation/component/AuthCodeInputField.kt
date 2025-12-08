@@ -33,7 +33,7 @@ import com.example.healthmeconverttocomposablecode.ui.AppFonts
 @Composable
 fun AuthCodeInputField(label: String, placeholder: String = "") {
 
-    var inputText = remember { mutableStateOf("") }
+    val inputText = remember { mutableStateOf("") }
 
 
     Column(modifier = Modifier.fillMaxWidth()) {
@@ -66,6 +66,13 @@ fun AuthCodeInputField(label: String, placeholder: String = "") {
                     inputText.value = text
                 },
                 modifier = Modifier.padding(start = 17.dp),
+                placeholder = {
+                    Text(
+                        text = placeholder,
+                        fontSize = 17.sp,
+                        color = AppColors.placeholderColor
+                    )
+                },
                 colors = TextFieldDefaults.colors(
                     focusedContainerColor = Color.Transparent,
                     unfocusedContainerColor = Color.Transparent,
@@ -76,7 +83,7 @@ fun AuthCodeInputField(label: String, placeholder: String = "") {
                     keyboardType = KeyboardType.Number
                 ),
 
-            )
+                )
 
             Row(modifier = Modifier.align(Alignment.CenterEnd)) {
                 Text(
