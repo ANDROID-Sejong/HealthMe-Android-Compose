@@ -5,25 +5,38 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.healthmeconverttocomposablecode.R
-import com.example.healthmeconverttocomposablecode.ui.AppFonts
 import com.example.healthmeconverttocomposablecode.ui.AppColors
+import com.example.healthmeconverttocomposablecode.ui.AppFonts
 
 @Composable
-fun PasswordInputField(label: String) {
+fun PasswordInputField(label: String, onValueChange: (String) -> Unit) {
+    var inputText by remember { mutableStateOf("") }
+
+
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
             label,
@@ -33,7 +46,7 @@ fun PasswordInputField(label: String) {
             fontFamily = AppFonts.gmarketSans
         )
         Spacer(modifier = Modifier.height(10.dp))
-        Box(
+        Row(
             modifier = Modifier
                 .height(50.dp)
                 .fillMaxWidth()
@@ -46,13 +59,34 @@ fun PasswordInputField(label: String) {
                     color = AppColors.bigButtonColor,
                     shape = RoundedCornerShape(34.dp)
                 ),
-            contentAlignment = Alignment.CenterStart
+            verticalAlignment = Alignment.CenterVertically
         ) {
+            TextField(
+                value = inputText,//inputText
+                onValueChange = {
+                    inputText = it
+                    onValueChange(it) //외부 콜백에 전달
+                },
+                modifier = Modifier.padding(start = 17.dp).weight(1f),
+                singleLine = true,
+                visualTransformation = PasswordVisualTransformation(),//비밀번호 *로 뜨게
+                colors = TextFieldDefaults.colors(
+                    focusedContainerColor = Color.Transparent,
+                    unfocusedContainerColor = Color.Transparent,
+                    disabledContainerColor = Color.Transparent,
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent,
+                    disabledIndicatorColor = Color.Transparent,
+                ),
+                textStyle = TextStyle(fontSize = 17.sp)
+            )
 
             Image(
                 painter = painterResource(R.drawable.password_no_check),
                 contentDescription = "비밀번호 체크",
-                modifier = Modifier.padding(end =22.dp ).align(Alignment.CenterEnd)
+                modifier = Modifier
+                    //.align(Alignment.CenterEnd)
+                    .padding(end = 22.dp)
             )
 
         }
@@ -63,5 +97,5 @@ fun PasswordInputField(label: String) {
 @Preview(showBackground = true)
 @Composable
 fun PasswordInputFieldPreview() {
-    PasswordInputField("비밀번호")
+    PasswordInputField("비밀번호", onValueChange = ({ it }))
 }
