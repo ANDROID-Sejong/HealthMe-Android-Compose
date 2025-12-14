@@ -34,12 +34,17 @@ import com.example.healthmeconverttocomposablecode.ui.AppFonts
 @Composable
 fun AuthCodeInputField(
     label: String,
-    value: String,//입력한 인증코드 값
     onValueChange: (String) -> Unit,
     onResendClick: () -> Unit,
     onVerifyClick: () -> Unit,
-    remainingTime: String//남은시간
+    remainingTime: String,//남은시간
+    isEnableCheckButtonClick: Boolean,
+    isTextFieldEnable: Boolean,
+    isResendButtonEnable: Boolean
 ) {
+    val inputText = remember { mutableStateOf("") }
+
+
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
             label,
@@ -65,8 +70,11 @@ fun AuthCodeInputField(
             contentAlignment = Alignment.CenterStart
         ) {
             TextField(
-                value = value,
-                onValueChange = onValueChange,
+                value = inputText.value,
+                onValueChange = {
+                    inputText.value = it
+                    onValueChange(it)
+                },
                 modifier = Modifier.padding(start = 17.dp),
                 colors = TextFieldDefaults.colors(
                     focusedContainerColor = Color.Transparent,
@@ -76,6 +84,7 @@ fun AuthCodeInputField(
                     unfocusedIndicatorColor = Color.Transparent,
                     disabledIndicatorColor = Color.Transparent,
                 ),
+                enabled = isTextFieldEnable,
                 textStyle = TextStyle(fontSize = 17.sp),
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number
@@ -95,9 +104,12 @@ fun AuthCodeInputField(
                     modifier = Modifier
                         .padding(end = 2.dp, start = 5.dp)
                         .size(width = 35.dp, height = 22.dp)
-                        .clickable(onClick = onVerifyClick)
+                        .clickable(
+                            onClick = { onVerifyClick() },
+                            enabled = isEnableCheckButtonClick
+                        )
                         .background(
-                            color = AppColors.authButtonColor,
+                            color = if (isEnableCheckButtonClick) AppColors.authButtonColor else AppColors.authButtonDisableColor,
                             shape = RoundedCornerShape(5.dp)
                         ),
                     contentAlignment = Alignment.Center
@@ -114,9 +126,9 @@ fun AuthCodeInputField(
                     modifier = Modifier
                         .padding(end = 29.dp)
                         .size(width = 35.dp, height = 22.dp)
-                        .clickable(onClick = onResendClick)
+                        .clickable(onClick = { onResendClick() }, enabled = isResendButtonEnable)
                         .background(
-                            color = AppColors.authButtonColor,
+                            color = if (isResendButtonEnable) AppColors.authButtonColor else AppColors.authButtonDisableColor,
                             shape = RoundedCornerShape(5.dp)
                         ),
                     contentAlignment = Alignment.Center
@@ -138,9 +150,8 @@ fun AuthCodeInputField(
 @Preview(showBackground = true)
 @Composable
 fun AuthCodeInputFieldPreview() {
-    AuthCodeInputField(
-        "인증코드", "", {},//TODO 인증여부 반환
-        {} //TODO 이메일 재전송 및 시간 초기화)
-        , {},"05:00"
-    )
+//    AuthCodeInputField(
+//        "인증코드", "", {},//TODO 인증여부 반환
+//        {} //TODO 이메일 재전송 및 시간 초기화)
+//        , {}, "05:00", {}, {}, {}, {})
 }
