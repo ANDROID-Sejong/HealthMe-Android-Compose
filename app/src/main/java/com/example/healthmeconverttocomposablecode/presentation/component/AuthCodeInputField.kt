@@ -34,6 +34,7 @@ import com.example.healthmeconverttocomposablecode.ui.AppFonts
 @Composable
 fun AuthCodeInputField(
     label: String,
+    value: String,
     onValueChange: (String) -> Unit,
     onResendClick: () -> Unit,
     onVerifyClick: () -> Unit,
@@ -42,9 +43,6 @@ fun AuthCodeInputField(
     isTextFieldEnable: Boolean,
     isResendButtonEnable: Boolean
 ) {
-    val inputText = remember { mutableStateOf("") }
-
-
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
             label,
@@ -70,9 +68,8 @@ fun AuthCodeInputField(
             contentAlignment = Alignment.CenterStart
         ) {
             TextField(
-                value = inputText.value,
+                value = value,
                 onValueChange = {
-                    inputText.value = it
                     onValueChange(it)
                 },
                 modifier = Modifier.padding(start = 17.dp),
