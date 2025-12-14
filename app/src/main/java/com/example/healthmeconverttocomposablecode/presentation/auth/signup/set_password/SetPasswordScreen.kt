@@ -1,4 +1,4 @@
-package com.example.healthmeconverttocomposablecode.presentation.auth.signup
+package com.example.healthmeconverttocomposablecode.presentation.auth.signup.set_password
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -24,7 +24,7 @@ import com.example.healthmeconverttocomposablecode.ui.AppColors
 import com.example.healthmeconverttocomposablecode.ui.AppFonts
 
 @Composable
-fun SetPassword() {
+fun SetPasswordScreen() {
     Box {
         Column(
             modifier = Modifier
@@ -76,6 +76,6 @@ fun SetPassword() {
 
 @Preview(showBackground = true)
 @Composable
-fun SetPasswordPreview() {
-    SetPassword()
+fun SetPasswordScreenPreview() {
+    SetPasswordScreen()
 }
