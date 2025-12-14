@@ -1,6 +1,5 @@
 package com.example.healthmeconverttocomposablecode.presentation.auth.signup.set_email
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.initializer
@@ -8,9 +7,10 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
+private val EMAIL_REGEX = Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$")
+private val AUTH_CODE_REGEX = Regex("^\\d{6}$")
 class SetEmailViewModel : ViewModel() {
-    private val EMAIL_REGEX = Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$")
-    private val AUTH_CODE_REGEX = Regex("^\\d{6}$")
+
 
     private var _state = MutableStateFlow(SetEmailState())
     val state = _state.asStateFlow()
