@@ -57,10 +57,10 @@ fun SetPasswordScreen() {
             PasswordInputField("비밀번호 확인", {})
             Spacer(modifier = Modifier.height(95.dp))
             Box(modifier = Modifier.padding(horizontal = 48.dp)) {
-                MediumButton("다음")
+                MediumButton("다음") {
+
+                }
             }
-
-
         }
         Image(
             painter = painterResource(R.drawable.under_background),
@@ -70,8 +70,6 @@ fun SetPasswordScreen() {
                 .align(Alignment.BottomCenter)
         )
     }
-
-
 }
 
 @Preview(showBackground = true)
