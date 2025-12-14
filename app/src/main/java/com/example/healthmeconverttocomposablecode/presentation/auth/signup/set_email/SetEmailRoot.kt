@@ -13,7 +13,7 @@ fun SetEmailRoot(viewmodel: SetEmailViewModel = viewModel(factory = SetEmailView
     SetEmailScreen(
         onNextButtonClick = {},
         setEmailState = setEmailState,
-        onEmailFiledChange = {
+        onEmailFieldChange = {
             viewmodel.isValidEmailType(it)
         },
         onAutoCodeRequestButtonClick = {
