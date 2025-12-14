@@ -1,4 +1,4 @@
-package com.example.healthmeconverttocomposablecode.presentation.auth.signup
+package com.example.healthmeconverttocomposablecode.presentation.auth.signup.set_password
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -24,7 +24,7 @@ import com.example.healthmeconverttocomposablecode.ui.AppColors
 import com.example.healthmeconverttocomposablecode.ui.AppFonts
 
 @Composable
-fun SetPassword() {
+fun SetPasswordScreen() {
     Box {
         Column(
             modifier = Modifier
@@ -57,10 +57,10 @@ fun SetPassword() {
             PasswordInputField("비밀번호 확인", {})
             Spacer(modifier = Modifier.height(95.dp))
             Box(modifier = Modifier.padding(horizontal = 48.dp)) {
-                MediumButton("다음")
+                MediumButton("다음") {
+
+                }
             }
-
-
         }
         Image(
             painter = painterResource(R.drawable.under_background),
@@ -70,12 +70,10 @@ fun SetPassword() {
                 .align(Alignment.BottomCenter)
         )
     }
-
-
 }
 
 @Preview(showBackground = true)
 @Composable
-fun SetPasswordPreview() {
-    SetPassword()
+fun SetPasswordScreenPreview() {
+    SetPasswordScreen()
 }

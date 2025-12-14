@@ -2,6 +2,7 @@ package com.example.healthmeconverttocomposablecode.presentation.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -23,7 +24,8 @@ fun BigButton(
     text: String,
     backgroundColor: Color = AppColors.bigButtonColor,
     borderColor: Color = AppColors.bigButtonBorder,
-    textColor: Color = AppColors.bigButtonTextColor
+    textColor: Color = AppColors.bigButtonTextColor,
+    onClick: () -> Unit
 ) {
     Box(
         modifier = Modifier
@@ -34,7 +36,8 @@ fun BigButton(
                 color = borderColor,
                 width = 2.dp,
                 shape = RoundedCornerShape(29.dp)
-            ), contentAlignment = Alignment.Center
+            )
+            .clickable(onClick = onClick), contentAlignment = Alignment.Center
     ) {
         Text(
             text = text,
@@ -51,5 +54,5 @@ fun BigButton(
 @Preview(showBackground = false)
 @Composable
 fun BigButtonPreview() {
-    BigButton("로그인")
+    BigButton("로그인", onClick = {})
 }

@@ -1,4 +1,4 @@
-package com.example.healthmeconverttocomposablecode.presentation.auth.firstscreen
+package com.example.healthmeconverttocomposablecode.presentation.auth.splash
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -23,11 +23,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.healthmeconverttocomposablecode.R
 import com.example.healthmeconverttocomposablecode.presentation.component.BigButton
-import com.example.healthmeconverttocomposablecode.ui.AppFonts
 import com.example.healthmeconverttocomposablecode.ui.AppColors
+import com.example.healthmeconverttocomposablecode.ui.AppFonts
 
 @Composable
-fun FirstScreen() {
+fun SplashScreen(onLoginButtonClick: () -> Unit, onSignUpButtonClick: () -> Unit) {
 
     Box(modifier = Modifier.background(AppColors.mainColor)) {
         Column(
@@ -48,26 +48,30 @@ fun FirstScreen() {
                 style = TextStyle(AppColors.firstScreenTextBrush)
             )
             Spacer(modifier = Modifier.height(74.dp))
-            BigButton("로그인")
+            BigButton("로그인") {
+                onLoginButtonClick()
+            }
             Spacer(modifier = Modifier.height(18.dp))
-            BigButton("회원가입", backgroundColor = AppColors.white, textColor = AppColors.black) //TODO 나중에 색상 변경할 것
+            BigButton("회원가입", backgroundColor = AppColors.white, textColor = AppColors.black) {
+                onSignUpButtonClick()
+            }
+            //TODO 나중에 색상 변경할 것
             Spacer(modifier = Modifier.height(224.dp))
         }
         Image(
             painter = painterResource(R.drawable.under_background),
             contentDescription = "배경",
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .align(Alignment.BottomCenter)
         )
     }
-
-
 
 
 }
 
 @Preview(showBackground = true)
 @Composable
-fun FirstScreenPreview(modifier: Modifier = Modifier) {
-    FirstScreen()
+fun SplashScreenPreview(modifier: Modifier = Modifier) {
+    SplashScreen({}, {})
 }

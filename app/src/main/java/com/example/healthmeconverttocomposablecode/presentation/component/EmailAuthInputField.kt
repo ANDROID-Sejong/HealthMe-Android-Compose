@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -26,21 +25,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.healthmeconverttocomposablecode.ui.AppFonts
 import com.example.healthmeconverttocomposablecode.ui.AppColors
-private val EMAIL_REGEX = Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$")
+import com.example.healthmeconverttocomposablecode.ui.AppFonts
 
 @Composable
 fun EmailAuthInputField(
     label: String,
+    value:String,
     placeholder: String,
     onClick: () -> Unit,
-    onValueChange: (String) -> Unit
+    onValueChange: (String) -> Unit,
+    isEnableButton: Boolean,
+    isTextFieldEnable: Boolean
 ) {
-    val inputText = remember { mutableStateOf("") }
-    val isEnable = EMAIL_REGEX.matches(inputText.value)
-
-
 
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
@@ -67,13 +64,13 @@ fun EmailAuthInputField(
             contentAlignment = Alignment.CenterStart
         ) {
             TextField(
-                value = inputText.value,//inputText
+                value = value,
                 onValueChange = {
-                    inputText.value = it
                     onValueChange(it) //외부 콜백에 전달
                 },
                 modifier = Modifier.padding(start = 17.dp),
                 singleLine = true,
+                enabled = isTextFieldEnable,
                 placeholder = {
                     Text(
                         text = placeholder,
@@ -98,9 +95,9 @@ fun EmailAuthInputField(
                 modifier = Modifier
                     .padding(end = 29.dp)
                     .size(width = 72.dp, height = 22.dp)
-                    .clickable(enabled = isEnable, onClick = onClick)
+                    .clickable(enabled = isEnableButton, onClick = onClick)
                     .background(
-                        color = if (isEnable) AppColors.authButtonColor else AppColors.authButtonDisableColor,
+                        color = if (isEnableButton) AppColors.authButtonColor else AppColors.authButtonDisableColor,
                         shape = RoundedCornerShape(5.dp)
                     )
                     .align(Alignment.CenterEnd),
@@ -123,5 +120,5 @@ fun EmailAuthInputField(
 @Preview(showBackground = true)
 @Composable
 fun EmailAuthInputFieldPreview() {
-    EmailAuthInputField("이메일", "Health1234@gmail.com", {}, {})
+    //   EmailAuthInputField("이메일", "Health1234@gmail.com", {}, {})
 }
