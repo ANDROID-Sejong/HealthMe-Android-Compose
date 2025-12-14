@@ -55,8 +55,9 @@ fun SetEmailScreen(
             )
             Spacer(modifier = Modifier.height(21.dp))
             EmailAuthInputField(
-                "이메일",
-                "health@gmail.com",
+                label = "이메일",
+                value = state.email,
+                placeholder = "health@gmail.com",
                 onClick = { onAutoCodeRequestButtonClick() },
                 onValueChange = ({ onEmailFieldChange(it) }),
                 isEnableButton = state.isRequestAuthCodeButtonEnabled,
