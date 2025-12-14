@@ -74,7 +74,7 @@ fun SetEmailScreen(
                     remainingTime = "",//TODO 타이머 구현 후 수정,
                     isEnableCheckButtonClick = state.isCheckAuthCodeButtonEnabled,
                     isTextFieldEnable = state.isAuthCodeFieldEnabled,
-                    isResendButtonEnable = state.isEnableResendAuthCodeButton
+                    isResendButtonEnable = state.isResendAuthCodeButtonEnabled
                 )
             } else {
                 Spacer(modifier = Modifier.height(82.dp))

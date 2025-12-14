@@ -4,7 +4,7 @@ data class SetEmailState(
     val email: String = "",
     val isCodeFieldVisible: Boolean = false,
     val authCode: String = "",
-    val isEnableResendAuthCodeButton: Boolean = false,
+    val isResendAuthCodeButtonEnabled: Boolean = false,
     val isNextButtonEnabled: Boolean = false,
     val isRequestAuthCodeButtonEnabled: Boolean = false,
     val remainingTime: Int = 300,

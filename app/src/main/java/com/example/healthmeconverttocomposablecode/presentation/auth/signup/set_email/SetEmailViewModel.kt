@@ -37,7 +37,7 @@ class SetEmailViewModel(
             isTextFieldEnabled = false,
             isRequestAuthCodeButtonEnabled = false,
             isAuthCodeFieldEnabled = true,
-            isEnableResendAuthCodeButton = true
+            isResendAuthCodeButtonEnabled = true
         )
     }
 
@@ -59,7 +59,7 @@ class SetEmailViewModel(
         _state.value = _state.value.copy(
             isNextButtonEnabled = true,
             isCheckAuthCodeButtonEnabled = false,
-            isEnableResendAuthCodeButton = false,
+            isResendAuthCodeButtonEnabled = false,
             isAuthCodeFieldEnabled = false
         )
     }
