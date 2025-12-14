@@ -29,7 +29,7 @@ import com.example.healthmeconverttocomposablecode.ui.AppFonts
 fun SetEmailScreen(
     onNextButtonClick: () -> Unit,
     setEmailState: SetEmailState,
-    onEmailFiledChange: (String) -> Unit,
+    onEmailFieldChange: (String) -> Unit,
     onAutoCodeRequestButtonClick: () -> Unit,
     onAuthCodeFieldChange: (String) -> Unit,
     onAuthCodeCheckButtonClick: () -> Unit
@@ -58,7 +58,7 @@ fun SetEmailScreen(
                 "이메일",
                 "health@gmail.com",
                 onClick = { onAutoCodeRequestButtonClick() },
-                onValueChange = ({ onEmailFiledChange(it) }),
+                onValueChange = ({ onEmailFieldChange(it) }),
                 isEnableButton = state.isRequestAuthCodeButtonEnabled,
                 isTextFieldEnable = state.isTextFieldEnabled
             )
@@ -67,6 +67,7 @@ fun SetEmailScreen(
                 AuthCodeInputField(
                     "인증코드",
                     onResendClick = {},
+                    value = state.authCode,
                     onVerifyClick = { onAuthCodeCheckButtonClick() },
                     onValueChange = { onAuthCodeFieldChange(it) },
                     remainingTime = "",//TODO 타이머 구현 후 수정,
