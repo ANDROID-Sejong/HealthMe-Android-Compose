@@ -59,7 +59,7 @@ fun MediumButton(
 @Preview(showBackground = false)
 @Composable
 fun MediumButtonPreview() {
-    MediumButton("로그인") {
-
-    }
+//    MediumButton("로그인") {
+//
+//    }
 }
