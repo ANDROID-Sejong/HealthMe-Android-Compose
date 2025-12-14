@@ -6,12 +6,12 @@ import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun SetEmailRoot(viewmodel: SetEmailViewModel = viewModel(factory = SetEmailViewModel.Factory)) {
+fun SetEmailRoot(viewmodel: SetEmailViewModel = viewModel(factory = SetEmailViewModel.Factory),onNextButtonClick:(String)-> Unit) {
 
     val setEmailState by viewmodel.state.collectAsState()
 
     SetEmailScreen(
-        onNextButtonClick = {},
+        onNextButtonClick = {onNextButtonClick(it)},
         setEmailState = setEmailState,
         onEmailFieldChange = {
             viewmodel.isValidEmailType(it)

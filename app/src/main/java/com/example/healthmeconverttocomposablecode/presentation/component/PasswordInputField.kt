@@ -3,7 +3,6 @@ package com.example.healthmeconverttocomposablecode.presentation.component
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -29,14 +28,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.healthmeconverttocomposablecode.R
+import com.example.healthmeconverttocomposablecode.presentation.auth.signup.set_password.PasswordState
 import com.example.healthmeconverttocomposablecode.ui.AppColors
 import com.example.healthmeconverttocomposablecode.ui.AppFonts
 
 @Composable
-fun PasswordInputField(label: String, onValueChange: (String) -> Unit) {
+fun PasswordInputField(
+    label: String,
+    onValueChange: (String) -> Unit,
+    isSatisfyPasswordRule: PasswordState
+) {
     var inputText by remember { mutableStateOf("") }
-    var isValid by remember { mutableStateOf(false) }
-
+    //var isValid by remember { mutableStateOf(false) }
 
 
     Column(modifier = Modifier.fillMaxWidth()) {
@@ -53,12 +56,12 @@ fun PasswordInputField(label: String, onValueChange: (String) -> Unit) {
                 .height(50.dp)
                 .fillMaxWidth()
                 .background(
-                    color = AppColors.white,
+                    color = if (isSatisfyPasswordRule == PasswordState.UNSATISFY) AppColors.passwordNotMatchColor else AppColors.white,
                     shape = RoundedCornerShape(34.dp)
                 )
                 .border(
                     width = 3.dp,
-                    color = AppColors.bigButtonColor,
+                    color = if (isSatisfyPasswordRule == PasswordState.UNSATISFY) AppColors.passwordNotMatchBorder else AppColors.bigButtonColor,
                     shape = RoundedCornerShape(34.dp)
                 ),
             verticalAlignment = Alignment.CenterVertically
@@ -69,7 +72,9 @@ fun PasswordInputField(label: String, onValueChange: (String) -> Unit) {
                     inputText = it
                     onValueChange(it) //외부 콜백에 전달
                 },
-                modifier = Modifier.padding(start = 17.dp).weight(1f),
+                modifier = Modifier
+                    .padding(start = 17.dp)
+                    .weight(1f),
                 singleLine = true,
                 visualTransformation = PasswordVisualTransformation(),//비밀번호 *로 뜨게
                 colors = TextFieldDefaults.colors(
@@ -84,7 +89,9 @@ fun PasswordInputField(label: String, onValueChange: (String) -> Unit) {
             )
 
             Image(
-                painter = if(isValid)painterResource(R.drawable.password_check) else painterResource(R.drawable.password_no_check),
+                painter = if (isSatisfyPasswordRule == PasswordState.SATISFY) painterResource(R.drawable.password_check)
+                else if (isSatisfyPasswordRule == PasswordState.NORMAL) painterResource(R.drawable.password_no_check)
+                else painterResource(R.drawable.password_wrong_check),
                 contentDescription = "비밀번호 체크",
                 modifier = Modifier
                     //.align(Alignment.CenterEnd)
@@ -99,6 +106,6 @@ fun PasswordInputField(label: String, onValueChange: (String) -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun PasswordInputFieldPreview() {
-    PasswordInputField("비밀번호", onValueChange = ({ it }))
+    //PasswordInputField("비밀번호", onValueChange = ({ it }))
 }
 

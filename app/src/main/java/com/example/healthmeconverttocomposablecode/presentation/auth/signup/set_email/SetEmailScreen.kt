@@ -27,7 +27,7 @@ import com.example.healthmeconverttocomposablecode.ui.AppFonts
 
 @Composable
 fun SetEmailScreen(
-    onNextButtonClick: () -> Unit,
+    onNextButtonClick: (String) -> Unit,
     setEmailState: SetEmailState,
     onEmailFieldChange: (String) -> Unit,
     onAutoCodeRequestButtonClick: () -> Unit,
@@ -83,7 +83,7 @@ fun SetEmailScreen(
             Spacer(modifier = Modifier.height(102.dp))
             Box(modifier = Modifier.padding(horizontal = 48.dp)) {
                 MediumButton("다음", isEnableButton = state.isNextButtonEnabled, onClick = {
-                    onNextButtonClick()
+                    onNextButtonClick(state.email)
                 })
             }
             Spacer(modifier = Modifier.height(224.dp))

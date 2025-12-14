@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -24,7 +25,11 @@ import com.example.healthmeconverttocomposablecode.ui.AppColors
 import com.example.healthmeconverttocomposablecode.ui.AppFonts
 
 @Composable
-fun SetPasswordScreen() {
+fun SetPasswordScreen(
+    state: SetPasswordState,
+    onPasswordChanged: (String) -> Unit,
+    onPasswordConfirmChanged: (String) -> Unit
+) {
     Box {
         Column(
             modifier = Modifier
@@ -42,23 +47,31 @@ fun SetPasswordScreen() {
                 lineHeight = 42.sp
             )
             Spacer(modifier = Modifier.height(21.dp))
-            PasswordInputField("비밀번호", {})
+            PasswordInputField(
+                "비밀번호",
+                { onPasswordChanged(it) },
+                isSatisfyPasswordRule = state.isPasswordSatisfyRule
+            )
             Spacer(modifier = Modifier.height(3.dp))
             Text(
-                "· 10자리의 영문, 특수문자(!#$%*@^&~?)만 사용 가능합니다.",
+                "· 10자리 이상의 영문, 특수문자(!#$%*@^&~?)만 사용 가능합니다.",
                 fontSize = 8.sp,
                 fontFamily = AppFonts.gmarketSans,
                 lineHeight = 22.sp,
                 color = AppColors.white,
-                modifier = Modifier.padding(start = 14.dp)
+                modifier = Modifier
+                    .padding(start = 14.dp)
+                    .alpha(if (state.isPasswordSatisfyRule == PasswordState.UNSATISFY) 1f else 0f)
             )
-
             Spacer(modifier = Modifier.height(3.dp))
-            PasswordInputField("비밀번호 확인", {})
+            PasswordInputField(
+                "비밀번호 확인",
+                { onPasswordConfirmChanged(it) },
+                state.isPasswordConfirmSatisfyRule
+            )
             Spacer(modifier = Modifier.height(95.dp))
             Box(modifier = Modifier.padding(horizontal = 48.dp)) {
-                MediumButton("다음") {
-
+                MediumButton(isEnableButton = state.isNextButtonEnabled, text = "다음") {
                 }
             }
         }
@@ -75,5 +88,5 @@ fun SetPasswordScreen() {
 @Preview(showBackground = true)
 @Composable
 fun SetPasswordScreenPreview() {
-    SetPasswordScreen()
+    //SetPasswordScreen("devmisterjerry@gmail.com")
 }

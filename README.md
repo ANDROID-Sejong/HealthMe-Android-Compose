@@ -13,3 +13,20 @@
   - 앱 첫 실행 화면(`FirstScreen`) 구현
 - **Refactoring**: `BigButton` 재사용성 개선, 입력 필드 UX 개선 (TextField 전환, 한 줄 제한, 키보드 타입 설정)
 - **Design System**: `AppColors`, `AppFonts`, `AppTextStyle` 등 공통 리소스 및 테마 정의
+
+#### 2025-12-14
+- **Navigation**: `Navigation 3` 및 `kotlinx-serialization` 라이브러리 추가, `NavigationRoot`를 통한 화면 전환 구조(Splash, SetEmail, SetPassword, Login) 구축
+- **Feature**:
+  - `Login`, `SetPassword` 화면 Route 정의
+  - `MediumButton`, `BigButton` 클릭 이벤트 및 활성화 상태 제어 기능 추가
+  - 인증 번호 전송/재전송에 따른 UI(버튼, 입력 필드) 상태 제어 로직 구현
+
+#### 2025-12-15
+- **Architecture**: `SetEmailViewModel` 도입으로 UI와 비즈니스 로직 분리 (MVVM 적용)
+- **Refactoring**:
+  - `EmailAuthInputField` 및 `AuthCodeInputField` 상태 호이스팅(State Hoisting) 적용
+  - `SplashScreen` 불필요한 파라미터 제거 및 코드 정리
+  - `SetEmail` 관련 패키지 구조 재정리
+- **Feature**:
+  - 이메일 유효성 검사(Regex) 및 인증 코드 확인 로직 연결
+  - 뷰모델 상태(`SetEmailState`)에 기반한 UI 업데이트 및 에러 처리

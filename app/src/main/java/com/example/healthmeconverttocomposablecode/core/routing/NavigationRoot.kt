@@ -9,7 +9,7 @@ import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.example.healthmeconverttocomposablecode.presentation.auth.login.LoginScreen
 import com.example.healthmeconverttocomposablecode.presentation.auth.signup.set_email.SetEmailRoot
-import com.example.healthmeconverttocomposablecode.presentation.auth.signup.set_password.SetPasswordScreen
+import com.example.healthmeconverttocomposablecode.presentation.auth.signup.set_password.SetPasswordRoot
 import com.example.healthmeconverttocomposablecode.presentation.auth.splash.SplashScreen
 
 @Composable
@@ -37,10 +37,13 @@ fun NavigationRoot(modifier: Modifier = Modifier) {
                     })
             }
             entry<Route.SetEmail> {
-                SetEmailRoot()
+                SetEmailRoot(onNextButtonClick = {
+                    topLevelBackStack.clear()
+                    topLevelBackStack.add(Route.SetPassword(it))
+                })
             }
             entry<Route.SetPassword> {
-                SetPasswordScreen()
+                SetPasswordRoot(it.email)
             }
             entry<Route.Login> {
                 LoginScreen() {
