@@ -8,13 +8,14 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.example.healthmeconverttocomposablecode.presentation.auth.login.LoginScreen
-import com.example.healthmeconverttocomposablecode.presentation.auth.signup.set_email.SetEmailScreen
+import com.example.healthmeconverttocomposablecode.presentation.auth.signup.set_email.SetEmailRoot
+import com.example.healthmeconverttocomposablecode.presentation.auth.signup.set_password.SetPasswordScreen
 import com.example.healthmeconverttocomposablecode.presentation.auth.splash.SplashScreen
 
 @Composable
 fun NavigationRoot(modifier: Modifier = Modifier) {
 
-    val toplevelBackStack = rememberNavBackStack(Route.Splash)
+    val topLevelBackStack = rememberNavBackStack(Route.Splash)
 
     NavDisplay(
         modifier = modifier,
@@ -22,28 +23,40 @@ fun NavigationRoot(modifier: Modifier = Modifier) {
             rememberSaveableStateHolderNavEntryDecorator(),
             rememberViewModelStoreNavEntryDecorator()
         ),
-        backStack = toplevelBackStack,
+        backStack = topLevelBackStack,
         entryProvider = entryProvider {
             entry<Route.Splash> {
                 SplashScreen(
                     onSplashStart = {
-                        toplevelBackStack.clear()
-                        toplevelBackStack.add(Route.Splash)
+                        topLevelBackStack.clear()
+                        topLevelBackStack.add(Route.Splash)
                     },
                     onLoginButtonClick = {
-                        toplevelBackStack.clear()
-                        toplevelBackStack.add(Route.Login)
+                        topLevelBackStack.clear()
+                        topLevelBackStack.add(Route.Login)
                     },
                     onSignUpButtonClick = {
-                        toplevelBackStack.clear()
-                        toplevelBackStack.add(Route.SetEmail)
+                        topLevelBackStack.clear()
+                        topLevelBackStack.add(Route.SetEmail)
                     })
             }
             entry<Route.SetEmail> {
-                SetEmailScreen()
+//                SetEmailScreen(
+//                    onNextButtonClick = {
+//                        toplevelBackStack.clear()
+//                        toplevelBackStack.add(Route.SetPassword)
+//                    },
+//                    {
+//                        ("it")
+//                    })
+                SetEmailRoot()
+            }
+            entry<Route.SetPassword> {
+                SetPasswordScreen()
             }
             entry<Route.Login> {
-                LoginScreen()
+                LoginScreen() {
+                }
             }
         }
 
