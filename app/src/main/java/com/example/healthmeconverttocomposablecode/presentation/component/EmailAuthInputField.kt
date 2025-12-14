@@ -1,6 +1,5 @@
 package com.example.healthmeconverttocomposablecode.presentation.component
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -39,9 +38,6 @@ fun EmailAuthInputField(
     isTextFieldEnable: Boolean
 ) {
     val inputText = remember { mutableStateOf("") }
-    Log.d("EmailAuthInputField", "EmailAuthInputField: $isTextFieldEnable")
-
-
 
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
