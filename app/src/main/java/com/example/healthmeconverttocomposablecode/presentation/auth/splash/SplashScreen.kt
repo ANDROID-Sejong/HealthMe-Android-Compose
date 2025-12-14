@@ -1,4 +1,4 @@
-package com.example.healthmeconverttocomposablecode.presentation.auth.firstscreen
+package com.example.healthmeconverttocomposablecode.presentation.auth.splash
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -27,7 +27,7 @@ import com.example.healthmeconverttocomposablecode.ui.AppFonts
 import com.example.healthmeconverttocomposablecode.ui.AppColors
 
 @Composable
-fun FirstScreen() {
+fun SplashScreen(onSplashStart: () -> Unit,onLoginButtonClick: () -> Unit,onSignUpButtonClick: () -> Unit) {
 
     Box(modifier = Modifier.background(AppColors.mainColor)) {
         Column(
@@ -48,9 +48,14 @@ fun FirstScreen() {
                 style = TextStyle(AppColors.firstScreenTextBrush)
             )
             Spacer(modifier = Modifier.height(74.dp))
-            BigButton("로그인")
+            BigButton("로그인"){
+                onLoginButtonClick()
+            }
             Spacer(modifier = Modifier.height(18.dp))
-            BigButton("회원가입", backgroundColor = AppColors.white, textColor = AppColors.black) //TODO 나중에 색상 변경할 것
+            BigButton("회원가입", backgroundColor = AppColors.white, textColor = AppColors.black){
+                onSignUpButtonClick()
+            }
+            //TODO 나중에 색상 변경할 것
             Spacer(modifier = Modifier.height(224.dp))
         }
         Image(
@@ -68,6 +73,6 @@ fun FirstScreen() {
 
 @Preview(showBackground = true)
 @Composable
-fun FirstScreenPreview(modifier: Modifier = Modifier) {
-    FirstScreen()
+fun SplashScreenPreview(modifier: Modifier = Modifier) {
+    SplashScreen({},{},{})
 }
