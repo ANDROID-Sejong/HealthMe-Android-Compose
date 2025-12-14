@@ -19,10 +19,6 @@ class SetEmailViewModel : ViewModel() {
         //Log.d("SetEmailViewModel", "전달된 이메일 값: '$email'") // 전달된 email이 무엇인지 확인
         if (EMAIL_REGEX.matches(email)) {
             _state.value = _state.value.copy(email = email, isRequestAuthCodeButtonEnabled = true)
-            Log.d(
-                "SetEmailViewModel",
-                "SetEmailViewModel: ${_state.value.isRequestAuthCodeButtonEnabled}"
-            )
         } else {
             _state.value = _state.value.copy(email = email, isRequestAuthCodeButtonEnabled = false)
 
@@ -40,7 +36,6 @@ class SetEmailViewModel : ViewModel() {
     }
 
     fun isValidAuthCode(authCode: String) {
-        Log.d("SetEmailViewModel", "SetEmailViewModel: $authCode")
         if (AUTH_CODE_REGEX.matches(authCode)) {
             _state.value =
                 _state.value.copy(isCheckAuthCodeButtonEnabled = true, authCode = authCode)
