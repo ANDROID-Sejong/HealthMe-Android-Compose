@@ -37,7 +37,7 @@ fun MediumButton(
                 shape = RoundedCornerShape(22.dp)
             )
             .border(
-                color = borderColor,
+                color = if(isEnableButton)borderColor else AppColors.mediumButtonDisableBorder ,
                 width = 3.dp,
                 shape = RoundedCornerShape(22.dp)
             )
@@ -59,7 +59,7 @@ fun MediumButton(
 @Preview(showBackground = false)
 @Composable
 fun MediumButtonPreview() {
-//    MediumButton("로그인") {
-//
-//    }
+    MediumButton("로그인") {
+
+    }
 }
