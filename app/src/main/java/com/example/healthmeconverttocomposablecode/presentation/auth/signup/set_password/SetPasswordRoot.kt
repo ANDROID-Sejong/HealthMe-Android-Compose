@@ -8,7 +8,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 @Composable
 fun SetPasswordRoot(
     email: String,
-    viewModel: SetPasswordViewModel = viewModel(factory = SetPasswordViewModel.Factory)
+    viewModel: SetPasswordViewModel = viewModel(factory = SetPasswordViewModel.Factory),
+    onNextButtonClick: (String, String) -> Unit
 ) {
     val state by viewModel.state.collectAsState()
     SetPasswordScreen(
@@ -18,9 +19,9 @@ fun SetPasswordRoot(
         },
         onPasswordConfirmChanged = {
             viewModel.isSatisfyRule(it, isConfirmPassword = true)
+        },
+        onNextButtonClick = {
+            onNextButtonClick(email,viewModel.state.value.password)
         }
-
     )
-
-
 }

@@ -12,6 +12,10 @@ object AppColors {
     val bigButtonBorder = Color(0xff9BB400)
     val mediumButtonColor = Color(0xffE4FF3E)
     val mediumButtonBorder = Color(0xff718300)
+    val mediumButtonDisableBorder = Color(0xffA8A8A8)
+
+    val smallButtonColor = Color(0xffE4FF3E)
+    val smallButtonBorder = Color(0xff718300)
 
     val bigButtonTextColor = Color(0xff409100)
     val mediumButtonTextColor = Color(0xff6D7F00)
@@ -37,4 +41,5 @@ object AppColors {
     )
 
     val placeholderColor = Color(0xffB8B8B8)
+    val informationInputFieldUnitTextColor = Color(0xff9D9D9D)
 }

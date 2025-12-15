@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 private val PASSWORD_REGEX = Regex("^[a-zA-Z!#$%*@^&~?]{10,}$")
-
 class SetPasswordViewModel() : ViewModel() {
     private var _state = MutableStateFlow(SetPasswordState())
     val state = _state.asStateFlow()
@@ -25,7 +24,8 @@ class SetPasswordViewModel() : ViewModel() {
                     } else {
                         _state.value = _state.value.copy(
                             isPasswordConfirmSatisfyRule = PasswordState.SATISFY,
-                            passwordConfirm = password
+                            passwordConfirm = password,
+                            isNextButtonEnabled = false
                         )
                     }
                 } else {
@@ -33,12 +33,16 @@ class SetPasswordViewModel() : ViewModel() {
 
                         _state.value = _state.value.copy(
                             isPasswordConfirmSatisfyRule = PasswordState.NORMAL,
-                            passwordConfirm = password
+                            passwordConfirm = password,
+                            isNextButtonEnabled = false
+
                         )
                     } else {
                         _state.value = _state.value.copy(
                             isPasswordConfirmSatisfyRule = PasswordState.UNSATISFY,
-                            passwordConfirm = password
+                            passwordConfirm = password,
+                            isNextButtonEnabled = false
+
                         )
                     }
                 }
@@ -48,18 +52,24 @@ class SetPasswordViewModel() : ViewModel() {
                 if (PASSWORD_REGEX.matches(password)) {
                     _state.value = _state.value.copy(
                         isPasswordSatisfyRule = PasswordState.SATISFY,
-                        password = password
+                        password = password,
+                        isNextButtonEnabled = false
+
                     )
                 } else {
                     if (password.isEmpty()) {
                         _state.value = _state.value.copy(
                             isPasswordSatisfyRule = PasswordState.NORMAL,
-                            password = password
+                            password = password,
+                            isNextButtonEnabled = false
+
                         )
                     } else {
                         _state.value = _state.value.copy(
                             isPasswordSatisfyRule = PasswordState.UNSATISFY,
-                            password = password
+                            password = password,
+                            isNextButtonEnabled = false
+
                         )
                     }
                 }

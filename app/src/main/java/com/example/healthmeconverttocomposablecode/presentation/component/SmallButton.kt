@@ -6,6 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,28 +21,27 @@ import com.example.healthmeconverttocomposablecode.ui.AppColors
 import com.example.healthmeconverttocomposablecode.ui.AppFonts
 
 @Composable
-fun MediumButton(
+fun SmallButton(
     text: String,
-    backgroundColor: Color = AppColors.mediumButtonColor,
-    borderColor: Color = AppColors.mediumButtonBorder,
-    textColor: Color = AppColors.mediumButtonTextColor,
+    backgroundColor: Color = AppColors.smallButtonColor,
+    borderColor: Color = AppColors.smallButtonBorder,
+    textColor: Color = AppColors.black,
     isEnableButton: Boolean = true,
     onClick: () -> Unit
 ) {
     Box(
         modifier = Modifier
-            .height(58.dp)
-            .fillMaxWidth()
+            .height(31.dp)
             .background(
                 color = if (isEnableButton) backgroundColor else AppColors.authButtonDisableColor,
                 shape = RoundedCornerShape(22.dp)
             )
             .border(
-                color = if(isEnableButton)borderColor else AppColors.mediumButtonDisableBorder ,
-                width = 3.dp,
+                color = borderColor,
+                width = 1.dp,
                 shape = RoundedCornerShape(22.dp)
             )
-            .clickable(onClick = onClick, enabled = isEnableButton),
+            .clickable(onClick = {onClick()}),
         contentAlignment = Alignment.Center
     ) {
         Text(
@@ -49,7 +49,8 @@ fun MediumButton(
             fontFamily = AppFonts.gmarketSans,
             fontWeight = FontWeight.Medium,
             color = textColor,
-            fontSize = 16.sp
+            fontSize = 13.sp,
+            modifier = Modifier.padding(horizontal = 23.dp)
         )
 
     }
@@ -58,8 +59,8 @@ fun MediumButton(
 
 @Preview(showBackground = false)
 @Composable
-fun MediumButtonPreview() {
-    MediumButton("로그인") {
+fun SmallButtonPreview() {
+    SmallButton("로그인") {
 
     }
 }

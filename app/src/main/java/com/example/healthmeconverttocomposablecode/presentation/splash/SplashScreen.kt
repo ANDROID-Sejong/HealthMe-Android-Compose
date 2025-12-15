@@ -1,4 +1,4 @@
-package com.example.healthmeconverttocomposablecode.presentation.auth.splash
+package com.example.healthmeconverttocomposablecode.presentation.splash
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
