@@ -28,7 +28,8 @@ import com.example.healthmeconverttocomposablecode.ui.AppFonts
 fun SetPasswordScreen(
     state: SetPasswordState,
     onPasswordChanged: (String) -> Unit,
-    onPasswordConfirmChanged: (String) -> Unit
+    onPasswordConfirmChanged: (String) -> Unit,
+    onNextButtonClick: () -> Unit,
 ) {
     Box {
         Column(
@@ -71,8 +72,10 @@ fun SetPasswordScreen(
             )
             Spacer(modifier = Modifier.height(95.dp))
             Box(modifier = Modifier.padding(horizontal = 48.dp)) {
-                MediumButton(isEnableButton = state.isNextButtonEnabled, text = "다음") {
-                }
+                MediumButton(
+                    isEnableButton = state.isNextButtonEnabled,
+                    text = "다음",
+                    onClick = { onNextButtonClick() })
             }
         }
         Image(
@@ -88,5 +91,5 @@ fun SetPasswordScreen(
 @Preview(showBackground = true)
 @Composable
 fun SetPasswordScreenPreview() {
-    //SetPasswordScreen("devmisterjerry@gmail.com")
+    //SetPasswordScreen()
 }
