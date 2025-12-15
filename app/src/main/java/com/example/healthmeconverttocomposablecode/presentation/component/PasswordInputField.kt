@@ -39,9 +39,6 @@ fun PasswordInputField(
     isSatisfyPasswordRule: PasswordState
 ) {
     var inputText by remember { mutableStateOf("") }
-    //var isValid by remember { mutableStateOf(false) }
-
-
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
             label,
@@ -94,7 +91,6 @@ fun PasswordInputField(
                 else painterResource(R.drawable.password_wrong_check),
                 contentDescription = "비밀번호 체크",
                 modifier = Modifier
-                    //.align(Alignment.CenterEnd)
                     .padding(end = 22.dp)
             )
 
@@ -106,6 +102,6 @@ fun PasswordInputField(
 @Preview(showBackground = true)
 @Composable
 fun PasswordInputFieldPreview() {
-    PasswordInputField("비밀번호", onValueChange = {it}, isSatisfyPasswordRule = PasswordState.SATISFY)
+    PasswordInputField("비밀번호", onValueChange = {_ -> }, isSatisfyPasswordRule = PasswordState.SATISFY)
 }
 
