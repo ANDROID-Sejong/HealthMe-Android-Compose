@@ -17,6 +17,10 @@ object AppColors {
     val smallButtonColor = Color(0xffE4FF3E)
     val smallButtonBorder = Color(0xff718300)
 
+    val agreeTermsButtonColor = Color(0xffEEFF87)
+    val agreeTermsButtonTextColor = Color(0xff9DA56A)
+
+
     val bigButtonTextColor = Color(0xff409100)
     val mediumButtonTextColor = Color(0xff6D7F00)
 
