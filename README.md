@@ -1,28 +1,4 @@
 ## 이전에 만들었던 HealthMe 프로젝트를 이용하여 기존 xml기반 UI를 compose기반 UI로 리펙토링하면서 컴포저블UI에 대해 익숙해져보는 Project
-
-<h3 align="center">✨ Tech Stack & Tools ✨</h3>
-<div align="center">
-    
-`Jetpack Compose` `MVVM` `ViewModel` `Navigation3` `Coroutine`
-
-</div>
-
-<!-- `Koin` `Clean Architecture` `JUnit4` ``
-
--->
-<!-- <div align="center">
-    <img src="https://img.shields.io/badge/c-A8B9CC?style=for-the-badge&logo=c&logoColor=white" />
-    <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
-    <img src="https://img.shields.io/badge/kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white" />
- <div align="center">
-    <img src="https://img.shields.io/badge/android studio-3DDC84?style=for-the-badge&logo=androidstudio&logoColor=white" />
-    <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=Firebase&logoColor=white" />
-    <img src="https://img.shields.io/badge/jetpack compose-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=white">
-</div> 
-
-</div> -->
----
-
 ### 개발 진척 일지
 
 #### 2025-12-07
@@ -51,6 +27,13 @@
   - `EmailAuthInputField` 및 `AuthCodeInputField` 상태 호이스팅(State Hoisting) 적용
   - `SplashScreen` 불필요한 파라미터 제거 및 코드 정리
   - `SetEmail` 관련 패키지 구조 재정리
+  - `isResendAuthCodeButtonEnabled` 변수명 변경으로 의미 명확화
+  - 불필요한 로그, 공백 및 import 제거
+  - 키, 몸무게 정규식 변수명 변경
+  - 비밀번호 입력란 불필요 코드 제거
 - **Feature**:
   - 이메일 유효성 검사(Regex) 및 인증 코드 확인 로직 연결
   - 뷰모델 상태(`SetEmailState`)에 기반한 UI 업데이트 및 에러 처리
+  - `SetInformation` (회원정보 입력) 화면 구현 (중간 저장)
+  - 몸무게, 키 입력 초기값 변경 (0 -> 빈 문자열)
+  - `SetInformation` 화면 이동을 위한 직렬화(Serialization) 설정 추가 (Navigation Type Safety)
