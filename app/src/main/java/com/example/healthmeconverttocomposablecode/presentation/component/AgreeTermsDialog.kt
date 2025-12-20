@@ -30,7 +30,7 @@ fun AgreeTermsDialog(
     isAgreeTerms: List<Boolean>,
     onDismissRequest: (Boolean, List<Boolean>) -> Unit
 ) {
-    val agreeTerms = rememberSaveable {
+    val agreeTerms = remember {
         mutableStateListOf<Boolean>().apply {
             isAgreeTerms.forEach {
                 add(it)
