@@ -38,6 +38,15 @@
 - **Refactoring**: `BigButton` 재사용성 개선, 입력 필드 UX 개선 (TextField 전환, 한 줄 제한, 키보드 타입 설정)
 - **Design System**: `AppColors`, `AppFonts`, `AppTextStyle` 등 공통 리소스 및 테마 정의
 
+
+#### 2025-12-09
+- **Feature**: 비밀번호 설정 화면(`SetPassword`) 레이아웃 및 디자인 구현
+- **UI Components**: `PasswordInputField` 컴포넌트 구현 및 텍스트 필드 속성 적용
+- **Design**: 비밀번호 유효성 조건 문구 및 일치 여부 확인용 체크 아이콘 추가
+
+#### 2025-12-13
+- **Environment**: Android Gradle Plugin(AGP) 버전 업데이트 (8.13.1 -> 8.13.2)
+
 #### 2025-12-14
 - **Navigation**: `Navigation 3` 및 `kotlinx-serialization` 라이브러리 추가, `NavigationRoot`를 통한 화면 전환 구조(Splash, SetEmail, SetPassword, Login) 구축
 - **Feature**:
@@ -46,11 +55,21 @@
   - 인증 번호 전송/재전송에 따른 UI(버튼, 입력 필드) 상태 제어 로직 구현
 
 #### 2025-12-15
-- **Architecture**: `SetEmailViewModel` 도입으로 UI와 비즈니스 로직 분리 (MVVM 적용)
-- **Refactoring**:
-  - `EmailAuthInputField` 및 `AuthCodeInputField` 상태 호이스팅(State Hoisting) 적용
-  - `SplashScreen` 불필요한 파라미터 제거 및 코드 정리
-  - `SetEmail` 관련 패키지 구조 재정리
+- **Architecture**: `SetEmailViewModel` 및 `SetPasswordViewModel` 도입으로 UI와 비즈니스 로직 분리 (MVVM 적용)
 - **Feature**:
-  - 이메일 유효성 검사(Regex) 및 인증 코드 확인 로직 연결
-  - 뷰모델 상태(`SetEmailState`)에 기반한 UI 업데이트 및 에러 처리
+  - **SetEmail**: 이메일 유효성 검사 및 인증 코드 확인 로직 연결, 다음 화면으로 이메일 데이터 전달 구현
+  - **SetPassword**: 비밀번호 유효성 검사 상태 관리 및 UI(체크 아이콘) 연동, 비밀번호 설정 화면 라우팅
+  - **SetInformation**: 개인정보 입력 화면 UI 및 컴포넌트(`InformationInputField`) 초기 구현
+- **Refactoring**:
+  - `EmailAuthInputField` 등 주요 입력 필드 상태 호이스팅(State Hoisting) 적용
+  - `SetEmail`, `SetPassword` 패키지 구조 재정리 및 불필요한 코드/리소스 정리
+
+#### 2025-12-20
+- **Feature**: 이용약관 동의 관련 컴포넌트(`AgreeTerms`) 및 다이얼로그 구현, 회원가입 정보 입력 후 약관 동의 화면으로의 내비게이션 연결
+- **Refactoring**: 약관 동의 관련 변수명 직관적으로 수정 (`isNextButtonEnable` -> `isNextButtonEnabled` 등) 및 코드 정리
+- **Fix**: `AgreeTermsDialog` 상태 관리 이슈 수정 (`rememberSaveable` -> `remember`)
+- **Design**: `AgreeAllTermsButton` 체크박스 레이아웃 개선
+
+#### 2025-12-21
+- **Feature**: 회원가입 완료 화면(`SignUpComplete`) 구현, 약관 동의 후 완료 화면으로의 라우팅 처리
+- **Design**: 완료 화면에 로고 아이콘 추가 및 인사말 텍스트 색상 적용
