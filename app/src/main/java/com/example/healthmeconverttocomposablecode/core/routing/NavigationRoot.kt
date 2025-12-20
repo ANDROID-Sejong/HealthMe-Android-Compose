@@ -9,6 +9,7 @@ import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.example.healthmeconverttocomposablecode.presentation.auth.login.LoginScreen
 import com.example.healthmeconverttocomposablecode.presentation.auth.signup.agree_terms.AgreeTermsRoot
+import com.example.healthmeconverttocomposablecode.presentation.auth.signup.complete_signup.CompleteSignupRoot
 import com.example.healthmeconverttocomposablecode.presentation.auth.signup.set_email.SetEmailRoot
 import com.example.healthmeconverttocomposablecode.presentation.auth.signup.set_information.SetInformationRoot
 import com.example.healthmeconverttocomposablecode.presentation.auth.signup.set_password.SetPasswordRoot
@@ -71,13 +72,22 @@ fun NavigationRoot(modifier: Modifier = Modifier) {
                 )
             }
             entry<Route.AgreeTerms> {
-                AgreeTermsRoot()
+                AgreeTermsRoot(onClickNextButton = {
+                    topLevelBackStack.clear()
+                    topLevelBackStack.add(Route.CompleteSignup)
+                })
 
 
             }
             entry<Route.Login> {
                 LoginScreen() {
                 }
+            }
+            entry<Route.CompleteSignup> {
+                CompleteSignupRoot(onClickScreen = {
+                    topLevelBackStack.clear()
+                    topLevelBackStack.add(Route.Splash)
+                })
             }
         }
 

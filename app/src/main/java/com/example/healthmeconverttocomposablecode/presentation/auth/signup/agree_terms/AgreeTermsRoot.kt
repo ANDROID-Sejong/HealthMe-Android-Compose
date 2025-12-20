@@ -6,7 +6,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun AgreeTermsRoot(viewModel: AgreeTermsViewModel= viewModel(factory = AgreeTermsViewModel.Factory)) {
+fun AgreeTermsRoot(viewModel: AgreeTermsViewModel= viewModel(factory = AgreeTermsViewModel.Factory),onClickNextButton:()-> Unit) {
 
     val state = viewModel.state.collectAsState()
 
@@ -27,6 +27,9 @@ fun AgreeTermsRoot(viewModel: AgreeTermsViewModel= viewModel(factory = AgreeTerm
                 viewModel.agreeTerm(booleans)
             }
 
+        },
+        onClickNextButton = {
+            onClickNextButton()
         }
 
     )
@@ -36,6 +39,6 @@ fun AgreeTermsRoot(viewModel: AgreeTermsViewModel= viewModel(factory = AgreeTerm
 @Preview(showBackground = true)
 @Composable
 private fun AgreeTermsRootPreview() {
-    AgreeTermsRoot()
+    AgreeTermsRoot(){}
     
 }

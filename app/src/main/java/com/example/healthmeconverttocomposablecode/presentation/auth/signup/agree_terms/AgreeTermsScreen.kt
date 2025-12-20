@@ -31,7 +31,8 @@ import com.example.healthmeconverttocomposablecode.ui.AppFonts
 fun AgreeTermsScreen(
     state: AgreeTermsState,
     onClickAgreeTermsButton: () -> Unit,
-    onClickAllAgreeTermsButton: (Boolean,List<Boolean>) -> Unit
+    onClickAllAgreeTermsButton: (Boolean,List<Boolean>) -> Unit,
+    onClickNextButton:()->Unit,
 ) {
     Box {
         Column(
@@ -96,7 +97,7 @@ fun AgreeTermsScreen(
             Spacer(modifier = Modifier.height(84.dp))
 
             Box(modifier = Modifier.padding(horizontal = 48.dp)) {
-                MediumButton(text = "다음", onClick = {}, isEnableButton = state.isNextButtonEnabled)
+                MediumButton(text = "다음", onClick = {onClickNextButton()}, isEnableButton = state.isNextButtonEnabled)
             }
         }
         Image(

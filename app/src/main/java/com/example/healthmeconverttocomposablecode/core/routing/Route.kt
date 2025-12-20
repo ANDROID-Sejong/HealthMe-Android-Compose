@@ -31,4 +31,7 @@ sealed interface Route : NavKey {
         val weight: String
     ) : Route
 
+    @Serializable
+    data object CompleteSignup: Route
+
 }
