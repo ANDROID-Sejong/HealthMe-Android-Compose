@@ -21,6 +21,8 @@ object AppColors {
     val agreeTermsButtonTextColor = Color(0xff9DA56A)
 
 
+
+
     val bigButtonTextColor = Color(0xff409100)
     val mediumButtonTextColor = Color(0xff6D7F00)
 
@@ -32,6 +34,10 @@ object AppColors {
     val authTextColor = Color(0xff829800)
 
     val countDownTextColor = Color(0xffAFAFAF)
+
+    val agreeTermsSmallTextColor = Color(0xffB5B5B5)
+    val agreeAllTermsButtonColor = Color(0xff636CFF)
+    val agreeTermsDisableTextColor = Color(0xffD9D9D9)
 
     val red = Color(0xffff0000)
 
@@ -46,4 +52,8 @@ object AppColors {
 
     val placeholderColor = Color(0xffB8B8B8)
     val informationInputFieldUnitTextColor = Color(0xff9D9D9D)
+
+    val agreeAllTermsCheckIconColor = Color(0xff00D93D)
+    val notAgreeAllTermsCheckIconBorderColor = Color(0xffABC600)
+    val horizontalDividerColor = Color(0xffC3C3C3)
 }
