@@ -35,7 +35,14 @@ fun SetInformationScreen(
     onChangeBirthDate: (String) -> Unit,
     onChangeHeight: (String) -> Unit,
     onChangeWeight: (String) -> Unit,
-    onButtonClick: (String) -> Unit
+    onButtonClick: (String) -> Unit,
+    onNextButtonClick: (
+        name: String,
+        birthDate: String,
+        gender: GenderState,
+        height: String,
+        weight: String
+    ) -> Unit
 ) {
     Box {
         Column(
@@ -114,11 +121,19 @@ fun SetInformationScreen(
             Spacer(modifier = Modifier.height(30.dp))
 
             Box(modifier = Modifier.padding(horizontal = 42.dp)) {
-                MediumButton(isEnableButton = state.isNextButtonEnabled, text = "다음") {
-                }
+                MediumButton(isEnableButton = state.isNextButtonEnabled, text = "다음", onClick = {
+                    onNextButtonClick(
+                        state.name,
+                        state.birthDate,
+                        state.gender,
+                        state.height,
+                        state.weight
+                    )
+                })
             }
             Spacer(modifier = Modifier.height(136.dp))
         }
+
         Image(
             painter = painterResource(R.drawable.under_background),
             contentDescription = "배경",
@@ -127,12 +142,13 @@ fun SetInformationScreen(
                 .align(Alignment.BottomCenter)
         )
     }
-
-
 }
 
 @Preview(showBackground = true)
 @Composable
 private fun SetInformationScreenPreview() {
-    SetInformationScreen(SetInformationState(isNextButtonEnabled = true), {}, {}, {}, {}, {})
+    SetInformationScreen(
+        SetInformationState(isNextButtonEnabled = true), {}, {}, {}, {}, {},
+        onNextButtonClick = {_,_,_,_,_  -> }
+    )
 }

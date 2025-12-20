@@ -9,7 +9,16 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 fun SetInformationRoot(
     email: String,
     password: String,
-    viewModel: SetInformationViewModel = viewModel(factory = SetInformationViewModel.Factory)
+    viewModel: SetInformationViewModel = viewModel(factory = SetInformationViewModel.Factory),
+    onNextButtonClick: (
+        email: String,
+        password: String,
+        name: String,
+        birthDate: String,
+        gender: GenderState,
+        height: String,
+        weight: String
+    ) -> Unit
 ) {
     val state by viewModel.state.collectAsState()
     SetInformationScreen(
@@ -28,6 +37,20 @@ fun SetInformationRoot(
         },
         onButtonClick = {
             viewModel.clickGenderButton(it)
+        },
+        onNextButtonClick = { name, birthDate, gender, height, weight ->
+
+            onNextButtonClick(
+                email,
+                password,
+                name,
+                birthDate,
+                gender,
+                height,
+                weight,
+            )
+
+
         }
 
 

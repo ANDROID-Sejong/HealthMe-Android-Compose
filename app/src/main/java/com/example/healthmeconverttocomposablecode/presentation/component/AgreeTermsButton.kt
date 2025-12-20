@@ -20,11 +20,7 @@ import com.example.healthmeconverttocomposablecode.ui.AppColors
 import com.example.healthmeconverttocomposablecode.ui.AppFonts
 
 @Composable
-fun MediumButton(
-    text: String,
-    backgroundColor: Color = AppColors.mediumButtonColor,
-    borderColor: Color = AppColors.mediumButtonBorder,
-    textColor: Color = AppColors.mediumButtonTextColor,
+fun AgreeTermsButton(
     isEnableButton: Boolean = true,
     onClick: () -> Unit
 ) {
@@ -33,23 +29,18 @@ fun MediumButton(
             .height(50.dp)
             .fillMaxWidth()
             .background(
-                color = if (isEnableButton) backgroundColor else AppColors.authButtonDisableColor,
-                shape = RoundedCornerShape(22.dp)
-            )
-            .border(
-                color = if(isEnableButton)borderColor else AppColors.mediumButtonDisableBorder ,
-                width = 3.dp,
-                shape = RoundedCornerShape(22.dp)
+                color = if (isEnableButton) AppColors.bigButtonColor else AppColors.agreeTermsSmallTextColor,
+                shape = RoundedCornerShape(15.dp)
             )
             .clickable(onClick = onClick, enabled = isEnableButton),
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = text,
+            text = "확인",
             fontFamily = AppFonts.gmarketSans,
-            fontWeight = FontWeight.Medium,
-            color = textColor,
-            fontSize = 16.sp
+            fontWeight = FontWeight.Bold,
+            color = if (isEnableButton) AppColors.black else AppColors.agreeTermsDisableTextColor,
+            fontSize = 18.sp
         )
 
     }
@@ -58,8 +49,8 @@ fun MediumButton(
 
 @Preview(showBackground = false)
 @Composable
-fun MediumButtonPreview() {
-    MediumButton("로그인") {
+fun AgreeTermsButtonPreview() {
+    AgreeTermsButton(false) {
 
     }
 }

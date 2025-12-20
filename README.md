@@ -1,4 +1,28 @@
 ## 이전에 만들었던 HealthMe 프로젝트를 이용하여 기존 xml기반 UI를 compose기반 UI로 리펙토링하면서 컴포저블UI에 대해 익숙해져보는 Project
+
+<h3 align="center">✨ Tech Stack & Tools ✨</h3>
+<div align="center">
+    
+`Jetpack Compose` `MVVM` `ViewModel` `Navigation3` `Coroutine`
+
+</div>
+
+<!-- `Koin` `Clean Architecture` `JUnit4` ``
+
+-->
+<!-- <div align="center">
+    <img src="https://img.shields.io/badge/c-A8B9CC?style=for-the-badge&logo=c&logoColor=white" />
+    <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+    <img src="https://img.shields.io/badge/kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white" />
+ <div align="center">
+    <img src="https://img.shields.io/badge/android studio-3DDC84?style=for-the-badge&logo=androidstudio&logoColor=white" />
+    <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=Firebase&logoColor=white" />
+    <img src="https://img.shields.io/badge/jetpack compose-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=white">
+</div> 
+
+</div> -->
+---
+
 ### 개발 진척 일지
 
 #### 2025-12-07
