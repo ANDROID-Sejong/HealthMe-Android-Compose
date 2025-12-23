@@ -1,4 +1,4 @@
-package com.example.healthmeconverttocomposablecode.presentation.main.my_page
+package com.example.healthmeconverttocomposablecode.presentation.main.my_page.my_page_main
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
@@ -38,7 +38,11 @@ import com.example.healthmeconverttocomposablecode.ui.AppFonts
 
 
 @Composable
-fun MyPageScreen(modifier: Modifier = Modifier, onSelectedClick: () -> Unit) {
+fun MyPageMainScreen(
+    modifier: Modifier = Modifier,
+    onSelectedClick: () -> Unit,
+    onSelectedBodyInfo: () -> Unit
+) {
     Box {
         Canvas(
             modifier = Modifier
@@ -235,7 +239,7 @@ fun MyPageScreen(modifier: Modifier = Modifier, onSelectedClick: () -> Unit) {
             Spacer(modifier = Modifier.height(20.dp))
             Box(modifier = Modifier.padding(horizontal = 32.dp)) {
                 MyPageButton(
-                    onClick = {},
+                    onClick = {onSelectedBodyInfo()},
                     text = "신체정보",
                     iconId = R.drawable.mypage_bodyinfo_icon
                 )
@@ -273,10 +277,11 @@ fun MyPageScreen(modifier: Modifier = Modifier, onSelectedClick: () -> Unit) {
 
 }
 
-@Preview(showBackground = true,
+@Preview(
+    showBackground = true,
     showSystemUi = true
 )
 @Composable
-private fun MyPageScreenPreview() {
-    MyPageScreen() {}
+private fun MyPageMainScreenPreview() {
+    //MyPageMainScreen() {}
 }
