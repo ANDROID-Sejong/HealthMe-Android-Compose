@@ -21,8 +21,6 @@ object AppColors {
     val agreeTermsButtonTextColor = Color(0xff9DA56A)
 
 
-
-
     val bigButtonTextColor = Color(0xff409100)
     val mediumButtonTextColor = Color(0xff6D7F00)
 
@@ -46,8 +44,8 @@ object AppColors {
 
     val firstScreenTextBrush = Brush.verticalGradient(
         colors = listOf(firstScreenGradientStartColor, firstScreenGradientEndColor),
-        startY =0f,
-        endY =Float.POSITIVE_INFINITY
+        startY = 0f,
+        endY = Float.POSITIVE_INFINITY
     )
 
     val placeholderColor = Color(0xffB8B8B8)
@@ -71,13 +69,26 @@ object AppColors {
     val myPageCanvasGradientEndColor = Color(0xFF4D58FF)   // B8FFEA
     val myPageCanvasGradient = Brush.verticalGradient(
         colors = listOf(myPageCanvasGradientStartColor, myPageCanvasGradientEndColor),
-        startY =0f,
-        endY =Float.POSITIVE_INFINITY
+        startY = 0f,
+        endY = Float.POSITIVE_INFINITY
     )
 
     val myPageInfoCategoryTextColor = Color(0xffC6C6E3)
     val myPageInfoValueTextColor = Color(0xff4E57E4)
     val myPageInfoValueUnitTextColor = Color(0xff6A73FF)
     val myPageInfoBmiNormalTextColor = Color(0xff00DEA9)
+
+    val myPageSetBodyInfoGradientStartColor = Color(0xFF5B65FF) // F3FFFB
+    val myPageSetBodyInfoGradientEndColor = Color(0xFFA1A7FF)   // B8FFEA
+
+    val myPageSetBodyInfoGradient = Brush.verticalGradient(
+        colors = listOf(myPageSetBodyInfoGradientStartColor, myPageSetBodyInfoGradientEndColor),
+        startY = 0f,
+        endY = Float.POSITIVE_INFINITY
+    )
+    val myPageSetBodyCategoryTextColor = Color(0xffB0B4FF)
+    val myPageSetBodyCategoryDividerColor = Color(0xffB8BCFF)
+
+    val myPageSetBodyInfoEditModeTextColor = Color(0xffB8BCFF)
 
 }
