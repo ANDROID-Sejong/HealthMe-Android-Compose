@@ -43,7 +43,7 @@ fun MyPageButton(
             Spacer(modifier = Modifier.width(25.dp))
             Icon(
                 painter = painterResource(iconId),
-                contentDescription = "신체정보메뉴 아이콘",
+                contentDescription = "${text}메뉴 아이콘",
                 tint = AppColors.mainColor,
                 modifier = Modifier.size(25.dp)
             )
