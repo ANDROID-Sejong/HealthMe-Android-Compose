@@ -83,3 +83,13 @@
   - 로그인 완료 후 메인 화면 진입 프로세스 구현
 - **Design**: 하단 내비게이션 바 아이콘 및 색상 스타일링
 - **Refactoring**: 내비게이션 백스택 관리 로직 개선 (`topLevelBackStack` 제거)
+
+#### 2025-12-23
+- **Feature**:
+  - 마이페이지 화면(`MyPageScreen`) 및 관련 라우팅 구현
+  - 프로필 이미지 및 메뉴 구성을 포함한 마이페이지 UI 개발
+- **UI Components**: `MyPageButton` 컴포넌트 구현 (아이콘 및 설명 텍스트 동적 처리)
+- **Design**:
+  - 마이페이지용 아이콘 리소스 및 전용 색상 추가
+  - Route에 따른 `Scaffold` 배경색 동적 변경 기능 구현
+- **Chore**: `MainActivity` Edge-to-Edge 설정 비활성화
