@@ -17,7 +17,7 @@ import com.example.healthmeconverttocomposablecode.ui.theme.HealthMeConvertToCom
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        //enableEdgeToEdge()
         setContent {
             NavigationRoot()
 

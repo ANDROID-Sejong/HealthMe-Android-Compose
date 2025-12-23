@@ -41,11 +41,11 @@ object AppColors {
 
     val red = Color(0xffff0000)
 
-    val startColor = Color(0xFFF3FFFB) // F3FFFB
-    val endColor = Color(0xFFB8FFEA)   // B8FFEA
+    val firstScreenGradientStartColor = Color(0xFFF3FFFB) // F3FFFB
+    val firstScreenGradientEndColor = Color(0xFFB8FFEA)   // B8FFEA
 
     val firstScreenTextBrush = Brush.verticalGradient(
-        colors = listOf(startColor, endColor),
+        colors = listOf(firstScreenGradientStartColor, firstScreenGradientEndColor),
         startY =0f,
         endY =Float.POSITIVE_INFINITY
     )
@@ -62,5 +62,22 @@ object AppColors {
     val bottomNavSelectedColor = Color(0xff00099C)
     val bottomNavNotSelectedColor = Color(0xff636CFF)
     val bottomNavBackgroundColor = Color(0xffCBCEFF)
+
+    val myPageIndicatorColor = Color(0xffBEC2FF)
+    val myPageHorizontalDividerColor = Color(0xffECECEC)
+    val myPageBackgroundColor = Color(0xffF6F6F6)
+
+    val myPageCanvasGradientStartColor = Color(0xFF6A73FF) // F3FFFB
+    val myPageCanvasGradientEndColor = Color(0xFF4D58FF)   // B8FFEA
+    val myPageCanvasGradient = Brush.verticalGradient(
+        colors = listOf(myPageCanvasGradientStartColor, myPageCanvasGradientEndColor),
+        startY =0f,
+        endY =Float.POSITIVE_INFINITY
+    )
+
+    val myPageInfoCategoryTextColor = Color(0xffC6C6E3)
+    val myPageInfoValueTextColor = Color(0xff4E57E4)
+    val myPageInfoValueUnitTextColor = Color(0xff6A73FF)
+    val myPageInfoBmiNormalTextColor = Color(0xff00DEA9)
 
 }

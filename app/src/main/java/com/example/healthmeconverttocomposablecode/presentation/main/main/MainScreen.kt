@@ -35,7 +35,18 @@ fun MainScreen(
 ) {
     val currentBackStack = backStack.lastOrNull()
     Scaffold(
-        containerColor = AppColors.mainColor,//bottomnav 둥근 부분 아는 곳 메인컬러로 덮음.
+        containerColor = when(currentBackStack){
+            is Route.Home->{
+                AppColors.mainColor
+            }
+            is Route.MyPage->{
+                AppColors.myPageBackgroundColor
+            }
+            else->{
+                AppColors.white
+            }
+        },
+
         bottomBar = {
             Surface(
                 shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp),
