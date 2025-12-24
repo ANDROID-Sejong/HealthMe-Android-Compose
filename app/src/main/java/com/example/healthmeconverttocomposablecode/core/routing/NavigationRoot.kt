@@ -60,7 +60,7 @@ fun NavigationRoot(modifier: Modifier = Modifier) {
             }
             entry<Route.SetBody> {
                 SetBodyInfoRoot(onClickBackButton = {
-                    topLevelBackStack.removeLast()
+                    topLevelBackStack.removeAt(topLevelBackStack.lastIndex)
                 })
             }
             entry<Route.SetInformation> {
